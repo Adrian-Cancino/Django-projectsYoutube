@@ -1,0 +1,25 @@
+{% extends "blog/base.html" %}
+
+{% block title%} Mi Blog {% endblock %}
+
+{%block content%}
+
+    <h1 class="is-size-1">Mi Blog</h1>
+
+    {% for post in posts %}
+
+        <h2 class="is-size-3">
+            <a href="{% url 'blog:post_detail' post.id %}">
+                {{post.title}}
+            </a>
+        </h2>
+
+        <p class="date is-italic has-text-weight-light pb-2">
+            Publicado {{ post.publish }} por {{ post.author }}
+        </p>
+
+        {{ post.body|truncatewords:30|linebreaks }}
+
+    {% endfor%}
+
+{% endblock%}
