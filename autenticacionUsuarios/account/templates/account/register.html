@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Create an account{% endblock %}
+<div class="columns">
+
+  {% block content %}
+  <div class="column is-half">
+
+      <h1 class="is-size-3 mt-3">Create an account</h1>
+      <p class="is-size-5">Please, sign up using the following form:</p>
+      <div class="login-form">
+
+        <form method="post">    
+          {% load widget_tweaks %}
+          {{ user_form.username.label_tag }} {% render_field user_form.username class+="input mt-2"%}
+          {{ user_form.first_name.label_tag }} {% render_field user_form.first_name class+="input mt-2"%}
+          {{ user_form.email.label_tag }} {% render_field user_form.email class+="input mt-2"%}
+          {{ user_form.password.label_tag }} {% render_field user_form.password class+="input mt-2"%}
+          {{ user_form.password2.label_tag }} {% render_field user_form.password2 class+="input mt-2"%}
+          {% csrf_token %}
+      
+          <input type="submit" value="Create my account" class="button mt-2 is-link">
+        </form>
+      </div>
+    </div>
+  {% endblock %}
+
+</div>

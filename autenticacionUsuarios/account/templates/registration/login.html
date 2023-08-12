@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Log-in{% endblock %}
+<div class="columns">
+{% block content %}
+  <div class="column is-half">
+    <h1 class="is-size-3 mt-3">Log-in</h1>
+    {% if form.errors %}
+      <p class="is-size-5">
+        Your username and password didn't match.
+        Please try again.
+      </p>
+    {% else %}
+      <p>
+        Please, use the following form to log-in. 
+        If you don't have an account <a href="{% url "register" %}">register here</a>.
+      </p>
+    {% endif %}
+    
+    <div class="login-form">
+      <form action="{% url 'login' %}" method="post">
+        {% load widget_tweaks %}
+        {% for field in form %}
+          {{field.label_tag}}
+          {% render_field field class+="input mt-2" %}
+        {% endfor %}
+        {% csrf_token %}
+        <input type="submit" value="Log-in" class="button mt-2">
+        <input type="hidden" name="next" value="{{ next }}" />
+      </form>
+    </div>
+</div>
+  {% endblock %}
+</div>

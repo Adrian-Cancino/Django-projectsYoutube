@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Log-in{% endblock %}
+<div class="columns">
+  {% block content %}
+  <div class=" column is-half">
+    <h1 class="is-size-3 mt-3">Log-in</h1>
+    <p class="is-size-5">Please, use the following form to log-in:</p>
+  
+    <form method="post">
+      {% for field in form %}
+        {{field.label_tag}} {{field}}
+      {% endfor %}
+      {% csrf_token %}
+      <input type="submit" value="Log in" class="button is-success mt-2">
+    </form>
+  </div>
+  
+{% endblock %}
